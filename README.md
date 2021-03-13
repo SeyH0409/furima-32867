@@ -15,16 +15,16 @@
 
 ### Association
 -has_many :products
--has_one  :addresses
+-has_one  :address
 -has_many :backgrounds
 
 
 ## addressesテーブル
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
-| user_id         | references | null: false, foreign_key: true |
+| user            | references | null: false, foreign_key: true |
 | postcode        | string     | null: false                    |
-| prefecture      | string     | null: false                    |
+| prefecture_id   | integer    | null: false                    |
 | city            | string     | null: false                    |
 | block           | string     | null: false                    |
 | building        | string     | null: false                    |
@@ -38,19 +38,19 @@
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
-| user_id         | references | null: false, foreign_key: true |
-| product_id      | references | null: false, foreign_key: true |
+| user            | references | null: false, foreign_key: true |
+| product         | references | null: false, foreign_key: true |
 
 ### Association
 -belongs_to :user
--belongs_to :products
+-belongs_to :product
 
 
 ## productsテーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| user_id            | references | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
 | name               | string     | null: false                    |
 | description        | text       | null: false                    |
 | price              | integer    | null: false                    |
@@ -62,3 +62,4 @@
 
 ### Association
 -belongs_to :user
+-has_one    :background
