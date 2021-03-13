@@ -15,7 +15,6 @@
 
 ### Association
 -has_many :products
--has_one  :address
 -has_many :backgrounds
 
 
@@ -44,7 +43,7 @@
 ### Association
 -belongs_to :user
 -belongs_to :product
--has_one    :background
+-has_one    :address
 
 
 ## productsテーブル
