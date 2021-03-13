@@ -14,12 +14,12 @@
 | birthday        | date   | null: false |
 
 ### Association
-
 -has_many :products
--has_one  :address
--has_one  :credit_card
+-has_one  :addresses
+-has_many :backgrounds
 
-## address
+
+## addressesテーブル
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
 | user_id         | references | null: false, foreign_key: true |
@@ -31,43 +31,34 @@
 | phone_number    | string     | null: false                    |
 
 ### Association
-
 -belongs_to :user
 
-## credit_cardsテーブル
+
+## backgroundsテーブル
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
 | user_id         | references | null: false, foreign_key: true |
+| product_id      | references | null: false, foreign_key: true |
 
 ### Association
 -belongs_to :user
+-belongs_to :products
+
 
 ## productsテーブル
 
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| user_id         | references | null: false, foreign_key: true |
-| name            | string     | null: false                    |
-| description     | text       | null: false                    |
-| category        | string     | null: false                    |
-| quality         | string     | null: false                    |
-| price           | integer    | null: false                    |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| user_id            | references | null: false, foreign_key: true |
+| name               | string     | null: false                    |
+| description        | text       | null: false                    |
+| price              | integer    | null: false                    |
+| quality_id         | integer    | null: false                    |
+| category_id        | integer    | null: false                    |
+| delivery_fee_id    | integer    | null: false                    |
+| delivery_days_id   | integer    | null: false                    |
+| delivery_source_id | integer    | null: false                    |
 
 ### Association
-
 -belongs_to :user
--has_one :delivery
-
-## deliveryテーブル
-
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| products_id     | references | null: false, foreign_key: true |
-| delivery_fee    | string     | null: false                    |
-| delivery_days   | string     | null: false                    |
-| delivery_source | string     | null: false                    |
-
-### Association
-
--belongs_to :product
