@@ -16,10 +16,6 @@ class User < ApplicationRecord
               validates :first_name_kana
        end
   end
-  validates :email,
-            format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
-            uniqueness: { case_sensitive: true }
-
   validates :password,
             format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,}+\z/i }
 end
