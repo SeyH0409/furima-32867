@@ -12,6 +12,11 @@ RSpec.describe Product, type: :model do
       end
     end
     context '出品に失敗するとき' do
+      it 'imageが空だと登録できない' do
+        @product.image = nil
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Image can't be blank")
+      end
       it 'nameが空だと出品できない' do
         @product.name = ""
         @product.valid?
@@ -36,6 +41,26 @@ RSpec.describe Product, type: :model do
         @product.price = "１０００"
         @product.valid?
         expect(@product.errors.full_messages).to include("Price is not a number")
+      end
+      it 'proceが半角英数混合だと出品できない' do
+        @product.price = "1000a"
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Price is not a number")
+      end
+      it 'priceが半角英字だと出品できない' do
+        @product.price = "threehundred"
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Price is not a number")
+      end
+      it 'priceが299以下だと出品できない' do
+        @product.price = 299
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Price must be greater than 300")
+      end
+      it 'priceが10,000,000以上では出品できない' do
+        @product.price = 10000000
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Price must be less than 9999999")
       end
       it 'quality_idが空だと出品できない' do
         @product.quality_id = 1
