@@ -5,6 +5,7 @@ FactoryBot.define do
     postcode { '000-0000' }
     city     { '札幌市清田区' }
     block    { '平岡4条1丁目' }
+    building { '河合荘' }
     phone_number { '08066365646' }
   end
 end

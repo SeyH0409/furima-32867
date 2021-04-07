@@ -2,7 +2,6 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_product
   before_action :set_redirect, only: :index
-  before_action :sold_out
 
   def index
     @order_address = OrderAddress.new
@@ -39,14 +38,8 @@ class OrdersController < ApplicationController
   end
 
   def set_redirect
-    if current_user.id == @product.user_id
+    if current_user.id == @product.user_id || @product.order.present?
       redirect_to root_path
     end 
-  end
-
-  def sold_out
-    if @product.order.present?
-      redirect_to root_path
-    end
   end
 end
