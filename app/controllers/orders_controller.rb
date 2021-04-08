@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_product
-  before_action :set_redirect, only: :index
+  before_action :set_redirect, only: [:index, :create]
 
   def index
     @order_address = OrderAddress.new
