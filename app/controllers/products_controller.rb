@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :set_unless,  only: [:edit, :update, :destroy]
+  before_action :sold_out_redirect, only: [:edit, :update, :destroy]
 
   def index
     @products = Product.all.order("created_at DESC")
@@ -52,6 +53,12 @@ class ProductsController < ApplicationController
 
   def set_unless
     unless current_user.id == @product.user_id
+      redirect_to root_path
+    end
+  end
+
+  def sold_out_redirect
+    if @product.order.present?
       redirect_to root_path
     end
   end

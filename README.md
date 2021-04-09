@@ -15,13 +15,13 @@
 
 ### Association
 -has_many :products
--has_many :backgrounds
+-has_many :orders
 
 
 ## addressesテーブル
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
-| background      | references | null: false, foreign_key: true |
+| order           | references | null: false, foreign_key: true |
 | postcode        | string     | null: false                    |
 | prefecture_id   | integer    | null: false                    |
 | city            | string     | null: false                    |
@@ -30,10 +30,10 @@
 | phone_number    | string     | null: false                    |
 
 ### Association
--belongs_to :background
+-belongs_to :order
 
 
-## backgroundsテーブル
+## ordersテーブル
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
@@ -62,4 +62,4 @@
 
 ### Association
 -belongs_to :user
--has_one    :background
+-has_one    :order

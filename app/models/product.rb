@@ -22,4 +22,5 @@ class Product < ApplicationRecord
   belongs_to :delivery_fee
   belongs_to :delivery_day
   belongs_to :prefecture
+  has_one    :order
 end
