@@ -1,7 +1,7 @@
 <%= render 'shared/error_messages', model: f.object %>
 
     <%# 出品画像 %>
-    <div class="img-upload">
+    <div class="img-video-upload">
       <div class="weight-bold-text">
         出品画像
         <span class="indispensable">必須</span>
@@ -14,6 +14,22 @@
       </div>
     </div>
     <%# /出品画像 %>
+
+    <%# 出品動画 %>
+    <div class="img-video-upload">
+      <div class="weight-bold-text">
+        出品動画
+        <span class="optional">任意</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :video, accept: 'video/*', id:"item-image" %>
+      </div>
+    </div>
+    <%# /出品動画 %>
+
     <%# 商品名と商品説明 %>
     <div class="new-items">
       <div class="weight-bold-text">

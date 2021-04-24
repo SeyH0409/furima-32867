@@ -7,7 +7,12 @@
       <%= @product.name %>
     </h2>
     <div class="item-img-content">
-      <%= image_tag @product.image ,class:"item-box-img" %>
+      <%= image_tag @product.image ,class:"item-box-img-video" %>
+
+      <% if @product.video.present? %>
+        <%= video_tag(@product.video.to_s, controls: true, class:"item-box-img-video") %> 
+      <% end %>
+
       <% if @product.order.present? %>
        <div class="sold-out">
           <span>Sold Out!!</span>

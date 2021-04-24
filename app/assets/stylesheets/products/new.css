@@ -40,6 +40,16 @@
   font-weight: bold;
 }
 
+.optional{
+  background: #ccc;
+  margin-left: 8px;
+  padding: 3px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+}
+
 .weight-bold-text {
   font-weight: bold;
   min-width: 170px;
@@ -72,8 +82,8 @@
 
 /* /共通 */
 
-/* 出品画像 */
-.img-upload {
+/* 出品画像・動画 */
+.img-video-upload {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -89,7 +99,7 @@
   margin-bottom: 15px;
 }
 
-/* /出品画像 */
+/* /出品画像・動画 */
 
 /* 商品名と商品説明 */
 .new-items {

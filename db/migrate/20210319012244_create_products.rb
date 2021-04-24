@@ -10,6 +10,7 @@ class CreateProducts < ActiveRecord::Migration[6.0]
       t.integer    :delivery_fee_id, null: false
       t.integer    :delivery_day_id, null: false
       t.integer    :prefecture_id,   null: false
+      t.string     :video
       t.timestamps
     end
   end
