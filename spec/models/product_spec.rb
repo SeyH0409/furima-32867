@@ -10,9 +10,14 @@ RSpec.describe Product, type: :model do
       it '必須事項が全て埋まっていれば出品できる' do
         expect(@product).to be_valid
       end
+
+      it 'videoが空でも出品できる' do
+        @product.video = nil
+        expect(@product).to be_valid
+      end
     end
     context '出品に失敗するとき' do
-      it 'imageが空だと登録できない' do
+      it 'imageが空だと出品できない' do
         @product.image = nil
         @product.valid?
         expect(@product.errors.full_messages).to include("画像を入力してください")
@@ -22,7 +27,7 @@ RSpec.describe Product, type: :model do
         @product.valid?
         expect(@product.errors.full_messages).to include("商品名を入力してください")
       end
-      it 'descriptionが空だと登録できない' do
+      it 'descriptionが空だと出品できない' do
         @product.description = ""
         @product.valid?
         expect(@product.errors.full_messages).to include("商品の説明を入力してください")
@@ -37,7 +42,7 @@ RSpec.describe Product, type: :model do
         @product.valid?
         expect(@product.errors.full_messages).to include("価格を入力してください")
       end
-      it 'priceが全角数字だと登録できない' do
+      it 'priceが全角数字だと出品できない' do
         @product.price = "１０００"
         @product.valid?
         expect(@product.errors.full_messages).to include("価格は数値で入力してください")
@@ -67,7 +72,7 @@ RSpec.describe Product, type: :model do
         @product.valid?
         expect(@product.errors.full_messages).to include("商品の状態は1以外の値にしてください")
       end
-      it 'category_idが空だと登録できない' do
+      it 'category_idが空だと出品できない' do
         @product.category_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include("カテゴリーは1以外の値にしてください")

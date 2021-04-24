@@ -8,6 +8,7 @@ FactoryBot.define do
     delivery_fee_id {2}
     delivery_day_id {2}
     prefecture_id   {2}
+    video           {File.open("#{Rails.root}/spec/fixtures/test.mov")}
     association     :user
     
     after(:build) do |product|
