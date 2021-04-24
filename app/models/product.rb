@@ -16,6 +16,7 @@ class Product < ApplicationRecord
 
   belongs_to :user
   has_one_attached :image
+  mount_uploader :video, VideoUploader
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :quality
   belongs_to :category
