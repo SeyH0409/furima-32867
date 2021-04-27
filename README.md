@@ -59,6 +59,7 @@
 | delivery_fee_id    | integer    | null: false                    |
 | delivery_day_id    | integer    | null: false                    |
 | prefecture_id      | integer    | null: false                    |
+| video              | string     |                                |
 
 ### Association
 -belongs_to :user
